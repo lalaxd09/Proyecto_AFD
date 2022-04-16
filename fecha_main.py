@@ -24,12 +24,17 @@ G.add_edges_from([(estados[1],estados[2])],label=trancisiones[0])
 #G.add_edges_from([('C','F')], weight=4)
 #for G in
 
-"""val_map = {'A': 1.0,
-                   'D': 0.5714285714285714,
-                              'H': 0.0}"""
 
 #values = [val_map.get(node, 0.45) for node in G.nodes()]
-values=['gray']
+values=[]
+for node in G:
+    if node== estados[0]:
+        values.append('Green')
+
+    elif node == estados[2]:
+        values.append('Blue')
+    else:
+        values.append('Gray')
 #para las transiciones
 edge_labels=dict([((u,v,),d['label'])
                  for u,v,d in G.edges(data=True)])
