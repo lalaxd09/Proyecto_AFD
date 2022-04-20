@@ -4,10 +4,9 @@ import matplotlib.pyplot as plt
 import pylab
 from funcion import*
 from correo_recorrer import*
-<<<<<<< HEAD
-=======
+
 import matplotlib.patches as mpatches
->>>>>>> f701075 (Initial commit)
+
 correo=input("Ingrese correo electronico")
 c_electronico(correo)
 estados,trancisiones=datos_automata(correo)
@@ -31,9 +30,7 @@ G.add_edges_from([(estados[1],estados[2])],label=trancisiones[1])
                               'H': 0.0}"""
 
 #values = [val_map.get(node, 0.45) for node in G.nodes()]
-<<<<<<< HEAD
-values=['gray']
-=======
+
 values=[]
 for node in G:
     if node== estados[0]:#Estado incial color verde
@@ -43,7 +40,7 @@ for node in G:
         values.append('Blue')
     else:
         values.append('Gray')
->>>>>>> f701075 (Initial commit)
+
 #para las transiciones
 edge_labels=dict([((u,v,),d['label'])
                  for u,v,d in G.edges(data=True)])
@@ -57,8 +54,6 @@ pos=nx.spring_layout(G)
 print(pos)
 nx.draw_networkx_edge_labels(G,pos,edge_labels=edge_labels,label_pos=.5,font_size=20)
 nx.draw(G,pos, node_color =values ,with_labels=True, node_size=2000,edge_color=edge_colors)#edge_cmap=plt.cm.Reds)
-<<<<<<< HEAD
-=======
 
 estado_inical = mpatches.Patch(color='Green', label='Estado inicial')
 estado_final=mpatches.Patch(color='Blue', label=' Estado Final')
@@ -66,5 +61,5 @@ plt.legend(handles=[estado_inical,estado_final])
 
 plt.show()
 
->>>>>>> f701075 (Initial commit)
+
 pylab.show()
