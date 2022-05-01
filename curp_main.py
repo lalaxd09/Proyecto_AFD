@@ -7,8 +7,9 @@ from curp import*
 import matplotlib.patches as mpatches
 
 curp_=input("Ingrese curp")
-CURP(curp_)
-transciones_main=curp_datos(curp_)
+curp_m=curp_.upper()
+CURP(curp_m)
+transciones_main=curp_datos(curp_m)
 
 
 G = nx.DiGraph()
