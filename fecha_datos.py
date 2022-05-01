@@ -44,14 +44,18 @@ def fechas_datos(fechas):
         print(validar_a)
         print(nueva_cadena_a)
 
-    estados=[]
-    estados.extend(validar)
-    estados.extend(validar_m)
-    estados.extend(validar_a)
-    print(estados)
-    transiciones=['/']
+    transiciones=[]
+    diagonal = ['/']
+    diagonal_2=['/']
+    vacio=['']
+    transiciones.extend(vacio)
+    transiciones.extend(validar)
+    transiciones.extend(validar_m)
+    transiciones.extend(validar_a)
+    transiciones.extend(diagonal)
+    transiciones.extend(diagonal_2)
 
-    return estados,transiciones
+    return transiciones
 
 
 

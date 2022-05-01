@@ -6,17 +6,17 @@ Created on Wed Apr 13 22:45:04 2022
 """
 import re
 #funciones
-def CURPS(curp):
+def CURP(curp):
+    # Definimos la estructura de la CURP considerando las variaciones que presenta por medio de expresiones regulares, siendo un tanto similar a la del RFC
+    patron = re.compile(
+        "^[A-ZÑ]{1}(A|E|I|O|U|X)[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[0-9]|1[0-9]|2[0-9]|3[0-1])(H|M)(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[A-Z]{4}[0-9]{1}")
 
-    
-    patron=re.compile("^[A-ZÑ]{1}(A|E|I|O|U|X)[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[0-9]|1[0-9]|2[0-9]|3[0-1])(H|M)(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[A-Z]{4}[0-9]{1}")
-
-
+    # Siempre que encuentre una coincidencia absoluta de nuestro patrón lo tomara como válido
     if (re.search(patron, curp)):
-        print("Curp Valida")
+        print("CURP válida")
+
     else:
-        print("Curp Invalida")
-    
+        print("CURP inválida")
 
 
 def RFC(rfc):
@@ -59,23 +59,22 @@ def Validate_ip(ip):
  
     return "Dirección IP invalida"
 
-def correo_fiscal(folio_fiscal):
-    patron = re.compile("\w[0123456789abcdef]{1,8}[-]\w[0123456789abcdef]{1,4}[-]\w[0123456789abcdef]{1,4}[-]\w[0123456789abcdef]{1,4}[-]\w[0123456789abcdef]{1,12}")
-    folio=patron.findall(folio_fiscal)
-    
-    #cadenas de prueba
-    #folio=patron.findall("a98fdc10-c145-4520-6324-fabc467ec035")
-    #folio=patron.findall("a98fgc10-c145-4520-6324-flbc467ec035")
-    
-    aux=len(folio)
-    
+
+def FolioFiscal(folio_fiscal):
+    # Dentro del patrón de expresiones regulares delimitamos los caracteres admitidos por los números hexadecimales
+    patron = re.compile(
+        "\w[0123456789abcdef]{1,8}[-]\w[0123456789abcdef]{1,4}[-]\w[0123456789abcdef]{1,4}[-]\w[0123456789abcdef]{1,4}[-]\w[0123456789abcdef]{1,12}")
+    folio = patron.findall(folio_fiscal)
+
+    aux = len(folio)
+
+    # El auxiliar solo será mayor a cero si encuentra coinicdencia en la cadena ingresada por el usuario
     if aux > 0:
-    	print("Folio fiscal valido")
+        print("Folio fiscal válido")
     else:
-    	print("Folio fiscal invalido")
-    
-        
-    
+        print("Folio fiscal inválido")
+
+
 def c_electronico(correo_electronico):
     correo = re.compile("\w+[@]\w+[.]\w+")
     comprobacion = correo.findall(correo_electronico)

@@ -15,18 +15,18 @@ transciones_main=datos_automata(correo)
 #estaods:letras,numeros
 #transciones:.,@,
 G = nx.DiGraph()
-estados=['S','A','C','P','E']
+estados=['S','A','C','P','E','F']
 print(transciones_main[0])
 
 
 
 #G.add_edges_from([('letras', 'direccion')], label=".")
-
-G.add_edges_from([(estados[0],estados[1])],label=transciones_main[0])
+edge_list =[(estados[0],estados[1],{'w':'xd'})]
+"""G.add_edges_from([(estados[0],estados[1])],label=transciones_main[0])
 G.add_edges_from([(estados[1],estados[2])],label=transciones_main[1])
 G.add_edges_from([(estados[2],estados[3])],label=transciones_main[2])
 G.add_edges_from([(estados[3],estados[4])],label=transciones_main[3])
-
+G.add_edges_from([(estados[4],estados[5])],label=transciones_main[4])
 #G.add_edges_from([('exten),('E','F')], weight=3)
 #G.add_edges_from([('C','F')], weight=4)
 #for G in"""
@@ -42,13 +42,13 @@ for node in G:
     if node== estados[0]:#Estado incial color verde
         values.append('Green')
 
-    elif node == estados[4]:#Estado final color azul
+    elif node == estados[5]:#Estado final color azul
         values.append('Blue')
     else:
         values.append('Gray')
 
 #para las transiciones
-edge_labels=dict([((u,v,),d['label'])
+"""edge_labels=dict([((u,v,),d['label'])
                  for u,v,d in G.edges(data=True)])
                     #print('u :', u, 'v :', v,'d :',d)
 print(edge_labels)
@@ -65,8 +65,23 @@ estado_inical = mpatches.Patch(color='Green', label='Estado inicial')
 estado_final=mpatches.Patch(color='Blue', label=' Estado Final')
 plt.legend(handles=[estado_inical,estado_final])
 
-plt.show()
+plt.show()"""
 
 
 #pylab.show()
 
+G.add_edges_from(edge_list)
+pos=nx.spring_layout(G,seed=5)
+fig, ax = plt.subplots()
+nx.draw_networkx_nodes(G, pos, ax=ax,)
+nx.draw_networkx_labels(G, pos, ax=ax)
+fig.savefig("1.png", bbox_inches='tight',pad_inches=0)
+
+curved_edges = [edge for edge in G.edges() if reversed(edge) in G.edges()]
+straight_edges = list(set(G.edges()) - set(curved_edges))
+nx.draw_networkx_edges(G, pos, ax=ax, edgelist=straight_edges)
+arc_rad = 0.25
+nx.draw_networkx_edges(G, pos, ax=ax, edgelist=curved_edges, connectionstyle=f'arc3, rad = {arc_rad}')
+fig.savefig("2.png", bbox_inches='tight',pad_inches=0)
+
+plt.show()

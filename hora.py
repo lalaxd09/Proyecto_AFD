@@ -9,10 +9,10 @@ def hora_datos(hora):
         print(validar)
         print(nueva_cadena)
 
-    transicion = re.compile("^[:]")
-    if (re.search(transicion, nueva_cadena)):
-        validar_t = transicion.findall(nueva_cadena)
-        nueva_cadena_t = re.sub(transicion, "", nueva_cadena)
+    transicion_p = re.compile("^[:]")
+    if (re.search(transicion_p, nueva_cadena)):
+        validar_t = transicion_p.findall(nueva_cadena)
+        nueva_cadena_t = re.sub(transicion_p, "", nueva_cadena)
         print(validar_t)
         print(nueva_cadena_t)
 
@@ -22,12 +22,13 @@ def hora_datos(hora):
         nueva_cadena_m = re.sub(minutos, "", nueva_cadena_t)
         print(validar_m)
         print(nueva_cadena_m)
+    vacio=['']
+    transicion=[]
+    transicion.extend(vacio)
+    transicion.extend(validar)
+    transicion.extend(validar_t)
+    transicion.extend(validar_m)
 
-    estados=[]
-    estados.extend(validar)
-    estados.extend(validar_m)
-
-    transicion=[':']
 
 
-    return estados,transicion
+    return transicion
