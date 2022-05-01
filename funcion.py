@@ -9,7 +9,7 @@ import re
 def CURP(curp):
     # Definimos la estructura de la CURP considerando las variaciones que presenta por medio de expresiones regulares, siendo un tanto similar a la del RFC
     patron = re.compile(
-        "^[A-ZÑ]{1}(A|E|I|O|U|X)[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[0-9]|1[0-9]|2[0-9]|3[0-1])(H|M)(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)[A-Z]{4}[0-9]{1}")
+        "^[A-ZÑ]{1}(A|E|I|O|U|X)[A-Z]{2}[0-9]{2}(0[1-9]|1[0-2])(0[0-9]|1[0-9]|2[0-9]|3[0-1])(H|M)(AS|BC|BS|CC|CS|CH|CL|CM|DF|DG|GT|GR|HG|JC|MC|MN|MS|NT|NL|OC|PL|QT|QR|SP|SL|SR|TC|TS|TL|VZ|YN|ZS|NE)\w{5}")
 
     # Siempre que encuentre una coincidencia absoluta de nuestro patrón lo tomara como válido
     if (re.search(patron, curp)):

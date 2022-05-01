@@ -7,9 +7,9 @@ from correo_recorrer import*
 
 import matplotlib.patches as mpatches
 
-correo=input("Ingrese correo electronico")
-c_electronico(correo)
-transciones_main=datos_automata(correo)
+correo_=input("Ingrese correo electronico")
+c_electronico(correo_)
+transciones_main=datos_automata(correo_)
 
 
 #estaods:letras,numeros
