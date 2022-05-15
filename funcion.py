@@ -55,9 +55,13 @@ def Validate_ip(ip):
     p = re.compile(regex)
 
     if (re.search(p, ip)):
-        return "Direccion IP valida"
- 
-    return "Dirección IP invalida"
+        print("Direccion IP valida")
+        ip_v=ip
+
+    else:
+        print("Dirección IP invalida")
+
+    return(ip_v)
 
 
 def FolioFiscal(folio_fiscal):
