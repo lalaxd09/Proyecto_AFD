@@ -5,6 +5,10 @@ Created on Wed Apr 13 22:45:04 2022
 @author: princ
 """
 import re
+import tkinter as tk
+from tkinter import messagebox
+from correo_main import diagrama_correo_electronico
+
 #funciones
 def CURP(curp):
     # Definimos la estructura de la CURP considerando las variaciones que presenta por medio de expresiones regulares, siendo un tanto similar a la del RFC
@@ -86,9 +90,10 @@ def c_electronico(correo_electronico):
     aux=len(comprobacion)
     
     if aux > 0:
-    	print("correo electronico valido")
+        diagrama_correo_electronico(correo_electronico)
+
     else:
-    	print("correo electronico invalido")
+    	messagebox.showinfo(message="Correo electronico Invalido", title="Invalido")
 
     return correo
         

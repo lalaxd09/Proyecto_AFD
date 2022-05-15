@@ -11,9 +11,6 @@ from matplotlib.figure import Figure
 import tkinter as tk
 
 
-#estaods:letras,numeros
-#transciones:.,@,
-
 
 def diagrama_correo_electronico(correo):
     transciones_main = datos_automata(correo)
@@ -57,8 +54,37 @@ def diagrama_correo_electronico(correo):
 
     plt.show()
 
+    return f
 
 
+def ventana2():
+    ventana2 = tk.Toplevel()
+    ventana2.title('Correo Electronico')
+    etiqueta = tk.Label(ventana2, text='Validación de correo electronico')
+    etiqueta.grid(row=1,column=4)
+    entrada = tk.Entry(ventana2)
+    entrada.grid(row=2,column=4)
+    button1 = tk.Button(ventana2, text='Inciar',command=lambda: c_electronico(entrada.get()))
+    button1.grid(row=3,column=4)
+    tituloG=tk.Label(ventana2,text='Gramatica')
+    tituloG.grid(row=4, column=4)
+    gramatica=tk.Label(ventana2,text='S->[/w]A')
+    gramatica.grid(row=5,column=4)
+    gramaticaA = tk.Label(ventana2, text="A->['@']C")
+    gramaticaA.grid(row=6, column=4)
+    gramaticaC = tk.Label(ventana2, text='C->[A-Z]P')
+    gramaticaC.grid(row=7, column=4)
+    gramaticaP= tk.Label(ventana2, text="A->['.'][A-Z]E")
+    gramaticaP.grid(row=8, column=4)
+    gramaticaE = tk.Label(ventana2, text="E->ϵ")
+    gramaticaE.grid(row=9, column=4)
 
-#pylab.show()
+    # create matplotlib canvas using figure `f` and assign to widget `window`
+    #canvas = FigureCanvasTkAgg(c_electronico(entrada.get()), ventana2)
+
+    # get canvas as tkinter's widget and `gird` in widget `window`
+    #canvas.get_tk_widget().grid(row=10, column=4)
+
+
+# get canvas as tkinter's widget and `gird` in widget `window`
 
